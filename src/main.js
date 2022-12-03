@@ -14,20 +14,20 @@ $(function () {
         var token = $("#form-set-token").val();
         if (token.length > 0) {
             if (token.length < TOKEN_MIN_LENGTH || token.length > TOKEN_MAX_LENGTH) {
-                $("#modal-msg-content").html("自定义短链长度应为 " + TOKEN_MIN_LENGTH + " - " + TOKEN_MAX_LENGTH + " 个字符");
+                $("#modal-msg-content").html("The custom short chain length should be The custom short chain length should be " + TOKEN_MIN_LENGTH + " - " + TOKEN_MAX_LENGTH + " characters");
                 $("#modal-msg").modal('show');
                 return true;
             }
             //var pattern = /^([a-zA-Z0-9]){5,50}$/;
             var pattern = /^([a-zA-Z0-9_-])+$/;
             if (!pattern.test(token)) {
-                $("#modal-msg-content").html("无效的自定义短链，仅支持字母、数字");
+                $("#modal-msg-content").html("Invalid custom short chain, only letters and numbers are supported");
                 $("#modal-msg").modal('show');
                 return true;
             }
         }
         if (url.length < URL_MIN_LENGTH || url.length > URL_MAX_LENGTH) {
-            $("#modal-msg-content").html("网址长度在 " + URL_MIN_LENGTH + " - " + URL_MAX_LENGTH);
+            $("#modal-msg-content").html("URL length in " + URL_MIN_LENGTH + " - " + URL_MAX_LENGTH);
             $("#modal-msg").modal('show');
             return true;
         }
@@ -62,7 +62,7 @@ function show_result(url, shortUrl) {
     if (url.indexOf('//') === -1) {
         url = 'http://' + url;
     }
-    $("#modal-result-title").text("短网址已生成");
+    $("#modal-result-title").text("ShortLink was created");
     $("#modal-result-url").html('<a target="_blank" href="' + url + '">' + url + '</a>');
     $("#modal-result-token").html('<a target="_blank" href="' + shortUrl + '">' + shortUrl + '</a>');
     $("#modal-result").modal("show");
